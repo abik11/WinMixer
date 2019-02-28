@@ -15,6 +15,7 @@ namespace WinMixer
          vm = (MainViewModel)viewModel;
          vm.InitializeList(formsList);
          vm.InitializeTextBox(secondsTextBox);
+         refreshWindowsList.Start();
       }
 
       private void secondsTextBox_TextChanged(object sender, EventArgs e)
@@ -90,6 +91,16 @@ namespace WinMixer
       private void showWindowTimer_Tick(object sender, EventArgs e)
       {
          vm.SwitchWindows();
+      }
+
+      private void refreshWindowsList_Tick(object sender, EventArgs e)
+      {
+         vm.RefreshList(formsList);
+      }
+
+      private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+      {
+         refreshWindowsList.Stop();
       }
    }
 }

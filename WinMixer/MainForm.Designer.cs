@@ -37,6 +37,7 @@
          this.startButton = new System.Windows.Forms.Button();
          this.showWindowTimer = new System.Windows.Forms.Timer(this.components);
          this.stopButton = new System.Windows.Forms.Button();
+         this.refreshWindowsList = new System.Windows.Forms.Timer(this.components);
          this.listGroupBox.SuspendLayout();
          this.optionsGroupBox.SuspendLayout();
          this.SuspendLayout();
@@ -122,6 +123,11 @@
          this.stopButton.UseVisualStyleBackColor = true;
          this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
          // 
+         // refreshWindowsList
+         // 
+         this.refreshWindowsList.Interval = 1000;
+         this.refreshWindowsList.Tick += new System.EventHandler(this.refreshWindowsList_Tick);
+         // 
          // MainForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,6 +143,7 @@
          this.Name = "MainForm";
          this.ShowIcon = false;
          this.Text = "WinMixer";
+         this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
          this.listGroupBox.ResumeLayout(false);
          this.optionsGroupBox.ResumeLayout(false);
          this.optionsGroupBox.PerformLayout();
@@ -154,6 +161,7 @@
       private System.Windows.Forms.TextBox secondsTextBox;
       private System.Windows.Forms.Timer showWindowTimer;
       private System.Windows.Forms.Button stopButton;
+      private System.Windows.Forms.Timer refreshWindowsList;
    }
 }
 

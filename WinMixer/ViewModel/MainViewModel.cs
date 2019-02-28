@@ -27,9 +27,27 @@ namespace WinMixer.ViewModel
 
       public void InitializeList(CheckedListBox list)
       {
-         IEnumerable<Window> windows = new List<Window>();
-         string[] windowsTmp = Windows.Select(x => x.ProcessName).ToArray();
-         list.Items.AddRange(windowsTmp);
+         list.Items.AddRange(WindowsLogic.GetWindowsProcessNames(Windows));
+      }
+
+      public void RefreshList(CheckedListBox list)
+      {
+         Windows = WindowsLogic.GetNonExplorerWindows();
+
+         foreach (Window window in Windows)
+         {
+            if (!list.Items.Contains(window.ProcessName))
+               list.Items.Add(window.ProcessName);
+         }
+
+         int itemsCount = list.Items.Count - 1;
+         for (int i = itemsCount; i > 0; i--)
+         {
+            if (!Windows.Any(x => x.ProcessName == (string)list.Items[i]))
+               list.Items.Remove(list.Items[i]);
+         }         
+         
+         list.Refresh();
       }
 
       public void InitializeTextBox(TextBox textBox)

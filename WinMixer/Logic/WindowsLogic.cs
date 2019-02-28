@@ -23,5 +23,11 @@ namespace WinMixer.Logic
             })
             .ToList();
       }
+
+      public static string[] GetWindowsProcessNames(List<Window> windows)
+      {
+         string[] windowsTmp = windows.Select(x => x.ProcessName).ToArray();
+         return windowsTmp;
+      }
    }
 }

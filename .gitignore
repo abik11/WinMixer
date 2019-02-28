@@ -1,0 +1,7 @@
+﻿# .gitignore
+/.git
+/.vs
+/WinMixer/bin
+/WinMixer/obj
+.gitignore.bak
+WinMixer.csproj.user
